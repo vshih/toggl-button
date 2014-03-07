@@ -1,3 +1,7 @@
+
+help:
+	@echo Available targets: lint dist
+
 lint:
 	jslint scripts/*.js scripts/content/*.js
 

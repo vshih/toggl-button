@@ -1,4 +1,4 @@
-# Toggl Button Chrome extension
+# Toggl Button with Dropdown Chrome extension
 <br />
 Add Toggl one-click time tracking to popular web tools.
 
@@ -10,7 +10,7 @@ Add Toggl one-click time tracking to popular web tools.
 
 ## Installing from the Web Store
 
-https://chrome.google.com/webstore/detail/toggl-button/oejgccbfbmkkpaidnkphaiaecficdnfn
+https://chrome.google.com/webstore/detail/toggl-button-with-dropdow/jdakajeghfnbnhiblkibfcmejebddehm/
 
 ## Installing from Source
 
