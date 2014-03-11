@@ -54,4 +54,21 @@
   margin-left: 50px;
   color: #596573;
 }
+
+/* DOMNodeInserted alternative hack - http://www.backalleycoder.com/2012/04/25/i-want-a-damnodeinserted/ */
+@-webkit-keyframes nodeInserted {
+  from {
+    outline-color: #fff;
+  }
+  to {
+    outline-color: #000;
+  }
+}
+.property.description {
+  color: red;
+  -webkit-animation-duration: 0.001s;
+  -webkit-animation-name: nodeInserted;
+}
+
 /* End asana specific styles */
+

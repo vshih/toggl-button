@@ -1,6 +1,6 @@
 {
   "name": "Toggl Button with Dropdown",
-  "version": "0.2.4.1",
+  "version": "0.2.4.2",
   "manifest_version": 2,
   "description": "Add Unofficial Toggl Online Timer to Popular Web Tools",
   "background": {

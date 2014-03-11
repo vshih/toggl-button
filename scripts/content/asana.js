@@ -52,17 +52,18 @@
     return link;
   }
 
-  function addButton(e) {
-    if (!(e.target.className === "details-pane-redesign" || iframeRegex.test(e.target.name))) { return; }
-		if ($(".toggl-select")) { return; }
+  function addButton() {
+    if ($(".toggl-select")) { return; }
 
     var taskDescription = $(".property.description"),
-      title = $("#details_pane_title_row textarea#details_property_sheet_title").value,
+      titleElement = $("#details_pane_title_row textarea#details_property_sheet_title"),
       asanaProject = $(".ancestor-projects > .tag, .property.projects .token_name");
+
+    if (!(taskDescription && titleElement && asanaProject)) { return; }
 
     projectSelect = createProjectSelect(userData, "toggl-select asana", asanaProject ? asanaProject.text : '');
 
-    taskDescription.parentNode.insertBefore(createTimerLink(title), taskDescription.nextSibling);
+    taskDescription.parentNode.insertBefore(createTimerLink(titleElement.value), taskDescription.nextSibling);
     taskDescription.parentNode.insertBefore(projectSelect, taskDescription.nextSibling);
   }
 
@@ -70,8 +71,12 @@
     if (response.success) {
       //console.log(response.user);
       userData = response.user;
-      document.addEventListener("DOMNodeInserted", addButton);
+      document.addEventListener('webkitAnimationStart', function (event) {
+        if (event.animationName == 'nodeInserted') { addButton(); }
+      }, true);
     }
   });
 
 }());
+
+// vim: shiftwidth=2 tabstop=2 expandtab:
