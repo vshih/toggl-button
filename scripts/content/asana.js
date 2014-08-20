@@ -57,11 +57,17 @@
 
     var taskDescription = $(".property.description"),
       titleElement = $("#details_pane_title_row textarea#details_property_sheet_title"),
-      asanaProject = $(".ancestor-projects > .tag, .property.projects .token_name");
+      asanaProjectList = document.querySelectorAll(".projects .token_name, .ancestor-projects .token"),
+      asanaProjectSet = {};
 
-    if (!(taskDescription && titleElement && asanaProject)) { return; }
+    for (var i = 0; i < asanaProjectList.length; ++i) {
+      var text = asanaProjectList[i].text;
+      if (text) asanaProjectSet[text] = true;
+    }
 
-    projectSelect = createProjectSelect(userData, "toggl-select asana", asanaProject ? asanaProject.text : '');
+    if (!(taskDescription && titleElement && Object.keys(asanaProjectSet))) { return; }
+
+    projectSelect = createProjectSelect(userData, "toggl-select asana", asanaProjectSet);
 
     taskDescription.parentNode.insertBefore(createTimerLink(titleElement.value), taskDescription.nextSibling);
     taskDescription.parentNode.insertBefore(projectSelect, taskDescription.nextSibling);

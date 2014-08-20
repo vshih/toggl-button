@@ -29,9 +29,8 @@ function createOption(id, cid, text, isSelected) {
   return option;
 }
 
-function createProjectSelect(userData, className, projectName) {
-  var clientName, option,
-    select = createTag('select', className);
+function createProjectSelect(userData, className, projectNameSet) {
+  var clientName, select = createTag('select', className);
 
   //add an empty (default) option
   select.appendChild(createOption("default", null, "Select a Toggl project"));
@@ -39,7 +38,12 @@ function createProjectSelect(userData, className, projectName) {
   userData.projects.forEach(function (project) {
     var client = userData.$clientMap[project.cid];
     clientName = client ? client.name : "?";
-    select.appendChild(createOption(project.id, project.cid, clientName + " - " + project.name, project.name == projectName));
+    select.appendChild(createOption(
+			project.id,
+			project.cid,
+			clientName + " - " + project.name,
+			projectNameSet[project.name]
+		));
   });
 
   return select;
